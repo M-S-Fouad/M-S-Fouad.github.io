@@ -57,8 +57,14 @@ public class TestSimpleCircle
 				index++;
 			}
 		}
+		SimpleCircle[] temp = new SimpleCircle[index];
+		for (int i = 0; i <index; i++)
+			{
+				temp[i] = newCircle[i].copy();
+			}
+
 		
-		return newCircle;
+		return temp;
 		
 	}
 		
