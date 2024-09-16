@@ -19,7 +19,7 @@ public class TestSimpleCircle
 	public static SimpleCircle[] removeDuplicates(SimpleCircle[] c)
 	{
 		int count = 0;
-		for(int i=0; i < c.length; i++)
+/*		for(int i=0; i < c.length; i++)
 		{
 			boolean Duplicate = false;
 			for(int k = 0; k < count; k++)
@@ -35,9 +35,9 @@ public class TestSimpleCircle
 			{
 				count++;
 			}
-		}
+		} */
 		
-		SimpleCircle[] newCircle = new SimpleCircle[count];
+		SimpleCircle[] newCircle = new SimpleCircle[c.length];
 		int index = 0;
 		for (int i = 0; i < c.length; i++)
 		{
