@@ -2,17 +2,55 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
+//initialize variable
+let flufflyCatsAmount = 0;
+let orangeCatAmount = 0;
+let cuteCatAmount = 0;
+let sleepyCatAmount = 0;
+let sillyCatAmount = 0;
+
+//creating a function 
+function fetchCatData(tag) {
+  return fetch(`https://cataas.com/api/cats?tags=${tag}`)
+    .then(response => response.json()) //Parse for JSON response
+    .then(data => data.length) //return the number of cats for the given tag
+
+    //error catch just in case
+    .catch(error => {
+      console.error(`Error fetching ${tag} cats:`, error);
+      return 0;
+    });
+}
+
+//fetching data for each type of cat (doing this is allows for change of data whenever)
+Promise.all([
+  fetchCatData('Fluffy'),
+  fetchCatData('Orange'),
+  fetchCatData('cute'),
+  fetchCatData('sleepy'),
+  fetchCatData('silly')
+])
+
+.then(([fluffyAmount, orangeAmount, cuteAmount, sleepyAmount, sillyAmount]) => {
+  //storing the numbers
+  flufflyCatsAmount = flufflyAmount;
+  orangeCatAmount = orangeAmount;
+  cuteCatAmount = cuteAmount;
+  sleepyCatAmount = sleepyAmount;
+  sillyCatAmount = sillyAmount;
+})
+
 // Bar Chart Example
 var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["January", "February", "Fluffy", "April", "May", "June"],
     datasets: [{
       label: "Revenue",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [orangeCatAmount, cuteCatAmount, fluffyCatsAmount, sleepyCatAmount, sillyCatAmount, 54],
     }],
   },
   options: {
@@ -31,7 +69,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
+          max: 100,
           maxTicksLimit: 5
         },
         gridLines: {
