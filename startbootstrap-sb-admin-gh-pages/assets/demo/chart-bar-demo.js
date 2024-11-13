@@ -53,8 +53,9 @@ Promise.all([
       }],
     },
     options: {
+      responsive: true,
       scales: {
-        xAxes: [{
+        x: [{
           time: {
             unit: 'month'
           },
@@ -65,10 +66,10 @@ Promise.all([
             maxTicksLimit: 6
           }
         }],
-        yAxes: [{
+        y: [{
           ticks: {
             min: 0,
-            max: 600,
+            max: 100,
             maxTicksLimit: 5
           },
           gridLines: {
