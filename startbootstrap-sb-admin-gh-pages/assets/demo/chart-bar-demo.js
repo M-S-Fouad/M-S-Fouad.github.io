@@ -3,7 +3,7 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 //initialize variable
-let flufflyCatsAmount = 0;
+let fluffyCatsAmount = 0;
 let orangeCatAmount = 0;
 let cuteCatAmount = 0;
 let sleepyCatAmount = 0;
@@ -33,18 +33,18 @@ Promise.all([
 
 .then(([fluffyAmount, orangeAmount, cuteAmount, sleepyAmount, sillyAmount]) => {
   //storing the numbers
-  flufflyCatsAmount = flufflyAmount;
+  fluffyCatsAmount = fluffyAmount;
   orangeCatAmount = orangeAmount;
   cuteCatAmount = cuteAmount;
   sleepyCatAmount = sleepyAmount;
   sillyCatAmount = sillyAmount;
 
   // Bar Chart Example
-  var ctx = document.getElementById("myBarChart");
+  var ctx = document.getElementById("myBarChart").getContext('2d');//adding getContext 
   var myLineChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ["January", "February", "Fluffy", "April", "May", "June"],
+      labels: ["Orange", "Cute", "Fluffy", "Sleepy", "Silly", "June"],
       datasets: [{
         label: "Revenue",
         backgroundColor: "rgba(2,117,216,1)",
@@ -68,7 +68,7 @@ Promise.all([
         yAxes: [{
           ticks: {
             min: 0,
-            max: 100,
+            max: 300,
             maxTicksLimit: 5
           },
           gridLines: {
