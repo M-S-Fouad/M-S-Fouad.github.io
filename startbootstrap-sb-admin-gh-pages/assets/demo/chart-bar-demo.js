@@ -33,52 +33,53 @@ Promise.all([
 
 .then(([fluffyAmount, orangeAmount, cuteAmount, sleepyAmount, sillyAmount]) => {
   //storing the numbers
-  flufflyCatsAmount = flufflyAmount;
+  fluffyCatsAmount = fluffyAmount;
   orangeCatAmount = orangeAmount;
   cuteCatAmount = cuteAmount;
   sleepyCatAmount = sleepyAmount;
   sillyCatAmount = sillyAmount;
-})
 
 // Bar Chart Example
-var ctx = document.getElementById("myBarChart");
-var myLineChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ["January", "February", "Fluffy", "April", "May", "June"],
-    datasets: [{
-      label: "Revenue",
-      backgroundColor: "rgba(2,117,216,1)",
-      borderColor: "rgba(2,117,216,1)",
-      data: [orangeCatAmount, cuteCatAmount, fluffyCatsAmount, sleepyCatAmount, sillyCatAmount, 54],
-    }],
-  },
-  options: {
-    scales: {
-      xAxes: [{
-        time: {
-          unit: 'month'
-        },
-        gridLines: {
-          display: false
-        },
-        ticks: {
-          maxTicksLimit: 6
-        }
-      }],
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: 100,
-          maxTicksLimit: 5
-        },
-        gridLines: {
-          display: true
-        }
+var ctx = document.getElementById("myBarChart").getContext('2d');//adding getContext 
+  var myLineChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ["Orange", "Cute", "Fluffy", "Sleepy", "Silly", "June"],
+      datasets: [{
+        label: "Revenue",
+        backgroundColor: "rgba(2,117,216,1)",
+        borderColor: "rgba(2,117,216,1)",
+        data: [orangeCatAmount, cuteCatAmount, fluffyCatsAmount, sleepyCatAmount, sillyCatAmount, 54],
       }],
     },
-    legend: {
-      display: false
+    options: {
+      responsive: true,
+      scales: {
+        x: [{
+          time: {
+            unit: 'month'
+          },
+          gridLines: {
+            display: false
+          },
+          ticks: {
+            maxTicksLimit: 6
+          }
+        }],
+        y: [{
+          ticks: {
+            min: 0,
+            max: 100,
+            maxTicksLimit: 5
+          },
+          gridLines: {
+            display: true
+          }
+        }],
+      },
+      legend: {
+        display: false
+      }
     }
-  }
-});
+  });
+})
