@@ -7,6 +7,7 @@ let orangeCatAmount = 0;
 let cuteCatAmount = 0;
 let sleepyCatAmount = 0;
 let sillyCatAmount = 0;
+let kittyCatAmount = 0;
 
 //creating a function 
 function fetchCatData(tag) {
@@ -27,16 +28,18 @@ Promise.all([
   fetchCatData('Orange'),
   fetchCatData('cute'),
   fetchCatData('sleepy'),
-  fetchCatData('silly')
+  fetchCatData('silly'),
+  fetchCatData('kitty')
 ])
 
-.then(([fluffyAmount, orangeAmount, cuteAmount, sleepyAmount, sillyAmount]) => {
+.then(([fluffyAmount, orangeAmount, cuteAmount, sleepyAmount, sillyAmount, kittyAmount]) => {
   //storing the numbers
   fluffyCatsAmount = fluffyAmount;
   orangeCatAmount = orangeAmount;
   cuteCatAmount = cuteAmount;
   sleepyCatAmount = sleepyAmount;
   sillyCatAmount = sillyAmount;
+  kittyCatAmount = kittyAmount;
 
  
 // Bar Chart Example
@@ -44,12 +47,12 @@ var ctx = document.getElementById("myBarChart").getContext('2d');//adding getCon
   var myLineChart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ["Orange", "Cute", "Fluffy", "Sleepy", "Silly", "June"],
+      labels: ["Orange", "Cute", "Fluffy", "Sleepy", "Silly", "Kitty"],
       datasets: [{
         label: "Revenue",
         backgroundColor: "rgba(2,117,216,1)",
         borderColor: "rgba(2,117,216,1)",
-        data: [orangeCatAmount, cuteCatAmount, fluffyCatsAmount, sleepyCatAmount, sillyCatAmount, 54],
+        data: [orangeCatAmount, cuteCatAmount, fluffyCatsAmount, sleepyCatAmount, sillyCatAmount, kittyCatAmount],
       }],
     },
     options: {
@@ -69,8 +72,9 @@ var ctx = document.getElementById("myBarChart").getContext('2d');//adding getCon
         y: [{
           ticks: {
             min: 0,
-            max: 100,
-            maxTicksLimit: 5
+            max: 50,      // Ensure the max value is set to 100
+            stepSize: 1,  // This ensures the y-axis ticks will be at intervals of 10
+            beginAtZero: true,  // Ensure the y-axis starts at 0
           },
           gridLines: {
             display: true

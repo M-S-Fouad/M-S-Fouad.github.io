@@ -87,9 +87,10 @@ const tableData = [
     { name: "Donna Snider", position: "Customer Support", office: "New York", age: 27, startDate: "2011/01/25", salary: "$112,000" }
 ];
 
-
+//Obtain the min age and max age and produce the office for the people found within that range
 document.getElementById("ageRangeForm").addEventListener("submit", function (event) {
     event.preventDefault();
+
     const minAge = parseInt(document.getElementById("minAge").value, 10);
     const maxAge = parseInt(document.getElementById("maxAge").value, 10);
 
@@ -103,6 +104,7 @@ document.getElementById("ageRangeForm").addEventListener("submit", function (eve
 
     if (entryCount === 0) {
         document.getElementById("averageSalary").textContent = "No matching data found.";
+        document.getElementById("filteredData").textContent = "No matching offices found";
         return;
     }
 
@@ -114,4 +116,18 @@ document.getElementById("ageRangeForm").addEventListener("submit", function (eve
 
     document.getElementById("averageSalary").textContent = 
         `Number of Entries: ${entryCount}, Average Salary: $${averageSalary}`;
+
+    //initializing variables for offices
+    const officeName = filteredData.map(row => row.office);
+    const officeList = [];
+
+    officeName.forEach(office => {
+        if(!officeList.includes(office)) { //if officeList does not contain office, the condition is true and the if statement continues
+            officeList.push(office); 
+        }
+    })
+
+    //displaying the filtered offices
+    document.getElementById("filteredData").textContent =
+        `${officeList.join(', ')}`
 });
