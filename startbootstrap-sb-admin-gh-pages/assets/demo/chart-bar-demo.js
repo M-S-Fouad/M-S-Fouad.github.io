@@ -38,8 +38,9 @@ Promise.all([
   sleepyCatAmount = sleepyAmount;
   sillyCatAmount = sillyAmount;
 
-  // Bar Chart Example
-  var ctx = document.getElementById("myBarChart").getContext('2d');//adding getContext 
+ 
+// Bar Chart Example
+var ctx = document.getElementById("myBarChart").getContext('2d');//adding getContext 
   var myLineChart = new Chart(ctx, {
     type: 'bar',
     data: {
